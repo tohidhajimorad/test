@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.tohid.test.api.GitHubService;
+import com.example.tohid.test.db.RepoDB;
 import com.example.tohid.test.model.Repo;
 import com.example.tohid.test.model.RepoAdapter;
 import com.google.gson.Gson;
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Rep
 
             mAdapter = new RepoAdapter(repos);
             recyclerView.setAdapter(mAdapter);
+            RepoDB.getDatabase(this).repoDao().insert(repos);
+
         } else {
             System.out.println(response.errorBody());
         }

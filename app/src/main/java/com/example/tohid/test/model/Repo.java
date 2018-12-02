@@ -1,11 +1,18 @@
 
 package com.example.tohid.test.model;
 
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Entity
 public class Repo {
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private long id;
@@ -22,6 +29,7 @@ public class Repo {
     @Expose
     private boolean _private;
     @SerializedName("owner")
+    @Embedded
     @Expose
     private Owner owner;
     @SerializedName("html_url")
@@ -200,7 +208,7 @@ public class Repo {
     private long forksCount;
     @SerializedName("mirror_url")
     @Expose
-    private Object mirrorUrl;
+    private String mirrorUrl;
     @SerializedName("archived")
     @Expose
     private boolean archived;
@@ -209,7 +217,7 @@ public class Repo {
     private long openIssuesCount;
     @SerializedName("license")
     @Expose
-    private Object license;
+    private String license;
     @SerializedName("forks")
     @Expose
     private long forks;
@@ -735,11 +743,11 @@ public class Repo {
         this.forksCount = forksCount;
     }
 
-    public Object getMirrorUrl() {
+    public String getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(Object mirrorUrl) {
+    public void setMirrorUrl(String mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -759,11 +767,11 @@ public class Repo {
         this.openIssuesCount = openIssuesCount;
     }
 
-    public Object getLicense() {
+    public String getLicense() {
         return license;
     }
 
-    public void setLicense(Object license) {
+    public void setLicense(String license) {
         this.license = license;
     }
 
